@@ -2,7 +2,10 @@
   import Hint from '$lib/components/Hint.svelte';
 	import Ship from '$lib/components/Ship.svelte';
   import paperBg from '$lib/img/paper.webp';
-  export let data;
+  import wood from '$lib/img/wood.jpg';
+  import frame from '$lib/img/frame.png';
+	import type { PageData } from './$types';
+  export let data: PageData;
 
   let selectedClue = 0;
   let input = '';
@@ -37,28 +40,29 @@
       complete: false,
       started: false,
       title: 'The Plot Gains Thickness 🍑',
-      hint: '<p>Welcome abord the sailing ship Truxedo.</p>',
-      answer: '',
-      placeholder: '',
-      buttonText: ''
+      hint: `<p>Welcome abord the sailing ship Truxedo... I guess you've been here for a while, to be fair (shore leave on Saturdays/Sundays).<br>Today you've gathered together to mourn the death of your dear crewmate, Isaac. A very sad event, to be sure. He was busy counting the barnicles on the side of the ship (this is an analogy for endplugs) and fell into the sea, never to be seen again (I like to think he's in a better place).<br>You gather around a keg of non-alcoholic beer (very illegal) and tell stories about the good ol' days.<br>After the party, the crew decides to carry out the time-honored tradition of scouring the dead man's quarters for anything neat they can pilfer (to cherish their crewmate's memory, of course).</p>`,
+      answer: 'thatsprettyneat',
+      placeholder: 'Well, find anything?',
+      buttonText: 'Set sail!'
     },
+    // Hello, my dear frieds. If you are reading this I am sure that you have honored the time-honored tradition of looking though my quarters for anything that remains. While you may be disappointed thus far, I have good news. I have left for you a treasure of great value. There are some things you will need to do before setting out, though. The ship has fallen into disarray, and to find the treasure you must cross the dreaded Excel Sea. Before setting off you must find some parts for your ship! You will need: a steering wheel, a rudder, a sail, an anchor, a compass, and a mascot. I'm sure they won't be hard to find at all. If you search diligently, I'm sure you'll find my buried treasure! howneatisthat?! 
     {
       id: 3,
-      name: 'wheel',
+      name: `Captain's Wheel`,
       complete: false,
       started: false,
-      title: '',
-      hint: '<p></p>',
+      title: `Captain's Wheel`,
+      hint: `<p>After mulling it over, you decide to go ask the Captain where the ship's steering wheel has gone to. </p>`,
       answer: '',
       placeholder: '',
       buttonText: ''
     },
     {
       id: 4,
-      name: 'wheel',
+      name: 'anchor',
       complete: false,
       started: false,
-      title: '',
+      title: 'Anchor',
       hint: '<p></p>',
       answer: '',
       placeholder: '',
@@ -66,7 +70,7 @@
     },
     {
       id: 5,
-      name: 'wheel',
+      name: 'compass',
       complete: false,
       started: false,
       title: '',
@@ -77,7 +81,7 @@
     },
     {
       id: 6,
-      name: 'wheel',
+      name: 'sail',
       complete: false,
       started: false,
       title: '',
@@ -88,7 +92,29 @@
     },
     {
       id: 7,
-      name: 'wheel',
+      name: 'mascot',
+      complete: false,
+      started: false,
+      title: '',
+      hint: '<p></p>',
+      answer: '',
+      placeholder: '',
+      buttonText: ''
+    },
+    {
+      id: 8,
+      name: 'mascot',
+      complete: false,
+      started: false,
+      title: '',
+      hint: '<p></p>',
+      answer: '',
+      placeholder: '',
+      buttonText: ''
+    },
+    {
+      id: 9,
+      name: 'mascot',
       complete: false,
       started: false,
       title: '',
@@ -100,9 +126,10 @@
   ]
 
   const checkAnswer = () => {
-    if (input.trim().toLowerCase() === clueState[selectedClue]?.answer) {
+    if (input.trim().toLowerCase().replace(/\s/g,'') === clueState[selectedClue]?.answer) {
       clueState[selectedClue].complete = true;
       if (clueState[selectedClue + 1]) {
+        input = '';
         selectedClue += 1;
         clueState[selectedClue].started = true;
       }
@@ -110,9 +137,10 @@
   }
 </script>
 
-<div id="page-container" class="w-screen h-screen overflow-scroll flex relative font-serif text-2xl text-gray-800">
-
-  <ul class="flex flex-col items-center gap-2 absolute left-[calc(50%-12rem)] top-20 w-96">
+<div class="w-screen h-screen flex justify-center items-center bg-slate-700">
+  <div id="page-container" class="h-[900px] w-[1400px] flex relative font-serif text-2xl text-gray-800 overflow-clip">
+  <img class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-32" src={frame} alt="">
+  <ul class="flex flex-col items-center gap-12 opacity-75 absolute left-1/2 -translate-x-1/2 h-full top-20 w-96 z-40">
     {#each clueState as state, i}
       <li class="grid grid-cols-2 gap-2">
         <div class="flex items-center">
@@ -125,20 +153,24 @@
           {/if}
         </div>
       </li>
-      {#if i !== (clueState.length - 1)}
+      <!-- {#if i !== (clueState.length - 1)}
         <div class="h-12 border-r-4 border-green-400"/>
-      {/if}
+      {/if} -->
     {/each}
   </ul>
 
-  <div style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 justify-center items-center bg-cover bg-center">
+  <div style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 justify-center items-center bg-cover bg-center overflow-y-scroll py-12">
     <Hint title={clueState[selectedClue]?.title} hint={clueState[selectedClue]?.hint}/>
     <div class="flex justify-start w-2/3 gap-x-2">
       <input class="rounded form-input border-0 focus:ring-0 text-gray-700 text-xl" bind:value={input} type="text" placeholder={clueState[selectedClue]?.placeholder}>
       <button class="text-xl bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded"  on:click={checkAnswer}>{clueState[selectedClue]?.buttonText}</button>
     </div>
   </div>
-  <div id="right-pane" class="w-1/2 h-full bg-blue-300 flex flex-col justify-center items-center">
+  <div id="right-pane" style="background-image: url({wood});" class="w-1/2 h-full bg-blue-300 flex flex-col justify-center items-center bg-cover relative overflow-clip">
+
     <Ship />
+    <img class="absolute z-20 rotate-90 top-1/3 h-full w-[40px]" src={frame} alt="">
+    <img class="absolute z-20 rotate-90 bottom-1/3 h-full w-[40px]" src={frame} alt="">
   </div>
+</div>
 </div>
