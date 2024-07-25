@@ -1,10 +1,10 @@
 <script>
-  import clouds from '$lib/img/clouds.png';
-  import sky from '$lib/img/sky.png';
-  import mary from '$lib/img/mary.png';
-  import waterBottom from '$lib/img/water-bottom.png';
-  import waterTop from '$lib/img/water-top.png';
-  import ship from '$lib/img/ship.png';
+  import clouds from '$lib/img/clouds.webp';
+  import sky from '$lib/img/sky.webp';
+  import mary from '$lib/img/mary.webp';
+  import waterBottom from '$lib/img/water-bottom.webp';
+  import waterTop from '$lib/img/water-top.webp';
+  import ship from '$lib/img/ship.webp';
 </script>
 
 <div class="w-full h-2/3 max-h-[600px] relative overflow-clip">

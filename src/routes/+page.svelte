@@ -2,8 +2,8 @@
   import Hint from '$lib/components/Hint.svelte';
 	import Ship from '$lib/components/Ship.svelte';
   import paperBg from '$lib/img/paper.webp';
-  import wood from '$lib/img/wood.jpg';
-  import frame from '$lib/img/frame.png';
+  import wood from '$lib/img/wood.webp';
+  import frame from '$lib/img/frame.webp';
 	import type { PageData } from './$types';
   export let data: PageData;
 
