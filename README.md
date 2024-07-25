@@ -1,38 +1,36 @@
-# create-svelte
+# Welcome To The Treasure Hunt
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Items that need to be found:
+- sails (this will just be a truck bed cover lol)
+- ship's wheel
+- anchor
+- rudder
+- compass
+- praying mantis (in place of a parrot)
 
-## Creating a project
+Puzzles to solve:
+- ExcelSea
+- Aquarium
+- Cycle Count
+- Bottleneck Riddle:
+  
+Aye, landlubber, heed my lore,
+Of pirates bold and factory floor.
+In the clatter of gears and the ship’s full sail,
+Both seek a treasure, yet sometimes fail.
 
-If you're seeing this, you've probably already done this step. Congrats!
+In the factory’s hum or the ocean’s sway,
+Something slows us on our way.
+Pirates or workers, alike we fret,
+When progress halts, what do we get?
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Machines may grind and ships may stall,
+One problem’s the bane of them all.
+A chokepoint feared, like a pirate’s snare,
+What be the trouble lurking there?
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Answer quick, time does tick,
+The cursed, dreaded... "_____________"
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Work Order Hunt (this should be a comment on a CNC card - for sure the hint for the sails)
+- Coordinates (Muller coords: lat, long: 42.89192261732324,-97.41103450488997)

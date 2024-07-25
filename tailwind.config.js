@@ -1,9 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [],
+  content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    fontFamily: {
+      serif: ["Pirata One", 'serif']
+    },
+    extend: {}
   },
-  plugins: [],
-}
-
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
+  ]
+};
