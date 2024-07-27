@@ -49,7 +49,7 @@
            <p>You gather around a keg of non-alcoholic beer (very illegal) and tell stories about the good ol' days.</p>
            <p>After the party, the crew decides to carry out the time-honored tradition of scouring the dead man's quarters for anything neat they can pilfer (to cherish their crewmate's memory, of course).</p>`,
     answer: 'thatsprettyneat',
-    placeholder: 'Well, find anything?',
+    placeholder: 'Well?',
     buttonText: 'Set sail!'
   },
   {
@@ -66,7 +66,7 @@
            <p>The shipmaker isn't totally incompetent - all he needs to know is the sum of the nails and rivets that he will need.</p>`,
     answer: '104',
     placeholder: 'N + R = ?',
-    buttonText: ''
+    buttonText: 'Submit'
   },
   {
     id: 3,
@@ -98,22 +98,22 @@
   },
   {
     id: 5,
-    name: 'sail',
+    name: 'Excel Sea',
     complete: false,
     started: false,
-    title: '',
-    hint: `<p>There is but one piece of the ship left to restore. The sails! I am getting pretty tired of writing clues at this point, so I'm just going to think of a random WO number... 2... 2... 42069.<br></p>`,
-    answer: '',
-    placeholder: '',
-    buttonText: ''
+    title: 'The Skies Be Dark And Stormy',
+    hint: `<p>You have found all of the parts to the ship!</p><p>Of course, you set sail immediatly.</p><p>As you embark, you notice a group of what looks like people in the water! You feel obligated to help...</p><p>P:\\Public\\E-Systems\\Scheduling\\Isaac\\ExcelSea\\ohno.xlsx</p>`,
+    answer: 'mavis',
+    placeholder: 'RIP 😔',
+    buttonText: 'Onwards!'
   },
   {
     id: 6,
-    name: 'sail',
+    name: 'END',
     complete: false,
     started: false,
-    title: '',
-    hint: '<p></p>',
+    title: 'Landfall',
+    hint: `<p>Finally, you must sail to your final destination. It is time for your final clue!</p><p>lat, long: 42.89192261732324,-97.41103450488997</p><p>In a deep freeze.</p>`,
     answer: '',
     placeholder: '',
     buttonText: ''
@@ -144,7 +144,7 @@
         </div>
         
         <div class="h-8 mx-auto aspect-square rounded-full bg-white flex justify-center items-center">
-          {#if state.started && state.complete}
+          {#if state.started && state.complete || i === clueState.length}
             <svg class="stroke-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" ><path d="M20 6 9 17l-5-5"/></svg>
           {/if}
         </div>
@@ -157,6 +157,7 @@
 
   <div style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 items-center bg-cover bg-center overflow-y-scroll scrollbar-left py-12">
     <Hint title={clueState[selectedClue]?.title} hint={clueState[selectedClue]?.hint}/>
+    <!-- add some logic here to disable if this is the last clue -->
     <div class="flex justify-start w-2/3 gap-x-2">
       <input class="rounded form-input border-0 focus:ring-0 text-gray-700 text-xl" bind:value={input} type="text" placeholder={clueState[selectedClue]?.placeholder}>
       <button class="text-xl bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded"  on:click={checkAnswer}>{clueState[selectedClue]?.buttonText}</button>
