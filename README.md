@@ -10,9 +10,9 @@ Items that need to be found:
 
 Puzzles to solve:
 - ExcelSea
-- Aquarium
-- Cycle Count
-- Bottleneck Riddle:
+- Aquarium x
+- Cycle Count ()
+- Bottleneck Riddle: x
   
 Aye, landlubber, heed my lore,
 Of pirates bold and factory floor.
