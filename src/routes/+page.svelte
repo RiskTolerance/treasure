@@ -75,9 +75,9 @@
     started: false,
     title: 'A Fishy Cycle Count 🐠',
     hint: `<p>It's time to find the anchor! It turns out that the anchor came loose and fell into the depths of Aquarium Lagoon - you'll have to dive down and retrieve it!</p>
-           <p>Luckily for you, there is a small shop in town that sells diving suits. When you ask the shop owner what it will cost to buy the suit, he offers you a trade. He will give you the suit, but you must collect some data for him.</p>
-           <p>He would like a number that represents marine diversity in the waters of Aquarium Lagoon (a number which he will sell to local fishermen (data is valuable)).</p>
-           <p>Looking in from the 'surface' (aka outside of Aquarium Lagoon (aka outside the window)), he would like to know the result of multiplying the number of mammals, the number of fish, the number of crustaceans, and the number of all other types of creatures added together (shells without obvious inhabitants do not count). You, of course, agree.</p>`,
+          <p>Luckily for you, there is a small shop in town that sells diving suits. When you ask the shop owner what it will cost to buy the suit, he offers you a trade. He will give you the suit, but you must collect some data for him.</p>
+          <p>He would like a number that represents marine diversity in the waters of Aquarium Lagoon (a number which he will sell to local fishermen (data is valuable)).</p>
+          <p>Looking in from the 'surface' (aka outside of Aquarium Lagoon (aka outside the window)), he would like to know the result of multiplying the number of mammals, the number of fish, the number of crustaceans, and the number of all other types of creatures added together (shells without obvious inhabitants do not count). You, of course, agree.</p>`,
     answer: '1216',
     placeholder: `M x F x C x O = ?`,
     buttonText: 'Quick Maths!'
@@ -148,7 +148,7 @@
   }
 </script>
 
-<div class="w-screen min-w-[1500px] h-screen min-h-[1000px] flex justify-center items-center bg-slate-700">
+<div class="w-screen min-w-[1500px] h-screen min-h-[1000px] flex justify-center items-center bg-slate-700 mx-auto">
   <div id="page-container" class="h-[900px] w-[1400px] flex relative font-serif text-2xl text-gray-800 overflow-clip">
   <img class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-32" src={frame} alt="">
   <ul class="flex flex-col items-center gap-12 opacity-75 absolute left-1/2 -translate-x-1/2 h-full top-20 w-32 z-40">
