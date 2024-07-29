@@ -4,8 +4,6 @@
   import paperBg from '$lib/img/paper.webp';
   import wood from '$lib/img/wood.webp';
   import frame from '$lib/img/frame.webp';
-	import type { PageData } from './$types';
-  export let data: PageData;
 
   let selectedClue = 0;
   let input = '';
@@ -150,7 +148,7 @@
   }
 </script>
 
-<div class="w-screen h-screen flex justify-center items-center bg-slate-700">
+<div class="w-screen min-w-[1500px] h-screen flex justify-center items-center bg-slate-700">
   <div id="page-container" class="h-[900px] w-[1400px] flex relative font-serif text-2xl text-gray-800 overflow-clip">
   <img class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-32" src={frame} alt="">
   <ul class="flex flex-col items-center gap-12 opacity-75 absolute left-1/2 -translate-x-1/2 h-full top-20 w-32 z-40">
@@ -177,13 +175,13 @@
   <div bind:this={scrollableArea} style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 items-center bg-cover bg-center overflow-y-scroll scrollbar-left py-12">
     <Hint title={clueState[selectedClue]?.title} hint={clueState[selectedClue]?.hint}/>
     <!-- add some logic here to disable if this is the last clue -->
-    {#if selectedClue !== 6}
-       <div class="flex justify-start w-2/3 gap-x-2 relative">
+  {#if selectedClue !== 6}
+    <div class="flex justify-start w-2/3 gap-x-2 relative">
       <p class="absolute -top-6 left-2 text-sm">{errorMessage}</p>
       <input class="rounded form-input border-0 focus:ring-0 text-gray-700 text-xl" on:keypress={handleKeyPress} bind:value={input} type="text" placeholder={clueState[selectedClue]?.placeholder}>
       <button class="text-xl bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded" on:click={checkAnswer}>{clueState[selectedClue]?.buttonText}</button>
     </div>
-    {/if}
+  {/if}
     
   </div>
   <div id="right-pane" style="background-image: url({wood});" class="w-1/2 h-full bg-blue-300 flex flex-col justify-center items-center bg-cover relative overflow-clip">
