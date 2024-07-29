@@ -57,7 +57,7 @@
     name: `Captain's Wheel`,
     complete: false,
     started: false,
-    title: `What Can Go Wrong Will Go Wrong`,
+    title: `What Can Go Wrong Will Go Wrong 📂`,
     hint: `<p>You decide to start by figuring out where the ship's steering wheel has gone to. After asking around, you are dismayed to find that the troglodyte crew decided the wheel wasn't of much use and threw it out with the shipping pallets.</p>
            <p>To make matters worse, the shipmaker in the town has misplaced his work order instruction detailing how to make ship's wheels (typical).</p>
            <p>There is, however, a faint sliver of hope - you know that the in-house inventory used to stock the work order instruction for a ship's wheel... <i>somewhere</i>.</p>
@@ -73,7 +73,7 @@
     name: 'Anchor',
     complete: false,
     started: false,
-    title: 'A Fishy Cycle Count',
+    title: 'A Fishy Cycle Count 🐠',
     hint: `<p>It's time to find the anchor! It turns out that the anchor came loose and fell into the depths of Aquarium Lagoon - you'll have to dive down and retrieve it!</p>
            <p>Luckily for you, there is a small shop in town that sells diving suits. When you ask the shop owner what it will cost to buy the suit, he offers you a trade. He will give you the suit, but you must collect some data for him.</p>
            <p>He would like a number that represents marine diversity in the waters of Aquarium Lagoon (a number which he will sell to local fishermen (data is valuable)).</p>
@@ -87,7 +87,7 @@
     name: 'Compass',
     complete: false,
     started: false,
-    title: 'A Night Shift Nightmare',
+    title: 'A Night Shift Nightmare 🍾',
     hint: `<p>That night you find yourself at the tavern enjoying a cup of coffee in celebration of finding the anchor without having to Google whether or not a starfish is, in fact, a fish.</p>
            <p>Soon, you are buzzing on the caffeine and become hyper-aware of your surroundings. You notice a large man sitting at the bar, his greased back hair barely covering his balding head. On his belt hangs a compass!</p>
            <p>In a caffeinated stupor, you stumble over and inquire about it. "Oh, this? I don't really need it - I just think it looks cool. If you humor me and solve a riddle, you can have it!"</p>
@@ -101,7 +101,7 @@
     name: 'Excel Sea',
     complete: false,
     started: false,
-    title: 'The Skies Be Dark And Stormy',
+    title: 'The Skies Be Dark And Stormy 🌊',
     hint: `<p>You have found all of the parts to the ship!</p><p>Of course, you set sail immediatly.</p><p>As you embark, you notice a group of what looks like people in the water! You feel obligated to help...</p><p>P:\\Public\\E-Systems\\Scheduling\\Isaac\\ExcelSea\\ohno.xlsx</p>`,
     answer: 'mavis',
     placeholder: 'RIP 😔',
@@ -112,7 +112,7 @@
     name: 'END',
     complete: false,
     started: false,
-    title: 'Landfall',
+    title: 'Landfall 🏝️',
     hint: `<p>Finally, you must sail to your final destination. It is time for your final clue!</p><p>42°53'30.9"N 97°24'39.7"W</p><p>In a deep freeze.</p>`,
     answer: '',
     placeholder: '',
