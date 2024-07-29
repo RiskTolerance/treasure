@@ -148,7 +148,7 @@
   }
 </script>
 
-<div class="w-screen min-w-[1500px] h-screen flex justify-center items-center bg-slate-700">
+<div class="w-screen min-w-[1500px] h-screen min-h-[1000px] flex justify-center items-center bg-slate-700">
   <div id="page-container" class="h-[900px] w-[1400px] flex relative font-serif text-2xl text-gray-800 overflow-clip">
   <img class="absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-30 w-32" src={frame} alt="">
   <ul class="flex flex-col items-center gap-12 opacity-75 absolute left-1/2 -translate-x-1/2 h-full top-20 w-32 z-40">
