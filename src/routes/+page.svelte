@@ -9,6 +9,8 @@
 
   let selectedClue = 0;
   let input = '';
+  let errorMessage = '';
+  let scrollableArea: HTMLElement | null = null;
 
   type Clue = {
     id: number,
@@ -113,7 +115,7 @@
     complete: false,
     started: false,
     title: 'Landfall',
-    hint: `<p>Finally, you must sail to your final destination. It is time for your final clue!</p><p>lat, long: 42.89192261732324,-97.41103450488997</p><p>In a deep freeze.</p>`,
+    hint: `<p>Finally, you must sail to your final destination. It is time for your final clue!</p><p>42°53'30.9"N 97°24'39.7"W</p><p>In a deep freeze.</p>`,
     answer: '',
     placeholder: '',
     buttonText: ''
@@ -122,13 +124,28 @@
 
 
   const checkAnswer = () => {
-    if (input.trim().toLowerCase().replace(/\s/g,'') === clueState[selectedClue]?.answer) {
+    if (input.trim().toLowerCase().replace(/[^a-z0-9]/g,'') === clueState[selectedClue]?.answer) {
       clueState[selectedClue].complete = true;
       if (clueState[selectedClue + 1]) {
         input = '';
+        errorMessage = '';
+        if (scrollableArea) {
+          scrollableArea.scrollTop = 0;
+        }
         selectedClue += 1;
+        console.log(selectedClue);
         clueState[selectedClue].started = true;
+      } else {
+        input = '';
       }
+    } else {
+      input = '';
+      errorMessage = 'Wrong answer, try again!';
+    }
+  }
+  const handleKeyPress = (e:KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      checkAnswer();
     }
   }
 </script>
@@ -144,27 +161,32 @@
         </div>
         
         <div class="h-8 mx-auto aspect-square rounded-full bg-white flex justify-center items-center">
-          {#if state.started && state.complete || i === clueState.length}
+          {#if state.started && state.complete && i !== 6}
             <svg class="stroke-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" ><path d="M20 6 9 17l-5-5"/></svg>
+          {/if}
+          {#if selectedClue === 6 && i === 6}
+            <svg class="fill-yellow-700 h-3/4" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 95.8 122.9">
+              <path fill-rule="evenodd" d="M5.2 74.4h1.2l.1-.2a13.3 13.3 0 0 1 3.9-6.2c.6-.5 1.2-1 2-1.3a14.8 14.8 0 0 1 1-4.9h-3L5.2 74.4zm84.2 0h1.4l-4.6-12.6h-3.9l.4 1c.4 1.2.7 2.5.8 3.9.7.3 1.3.8 2 1.3a11.8 11.8 0 0 1 3.2 4.5c.3.6.5 1.2.6 1.9zm5.4.4c.6.4 1 1.1 1 1.9v43.1a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3v-43c0-.8.4-1.5 1-2l6.2-14.9L.8 33.4v-.6A18.5 18.5 0 0 1 6 21c1.3-1.3 14.2-7.6 25.4-13L46.7.1c.6-.3 1.4-.3 2 0 3.2 2 13.5 6.8 23 11.3a282 282 0 0 1 18.6 9.2c1.8 1.7 3.1 3.5 4 5.6.7 2 1 4.3.7 7l-5.6 26.5 5.4 15zm-38.1 1.4h-18v10.4a9 9 0 0 0 17.9 0V76.2zm-24-21a11 11 0 0 1 3-1.4 10.7 10.7 0 0 1 5-.1 47 47 0 0 1 7.8 2.4 21 21 0 0 1 6.6-2.4h.1a9.5 9.5 0 0 1 5 .1 10 10 0 0 1 2.9 1.4 14.7 14.7 0 0 1 15.2 1.4l1.6 1.5h6l5.4-25.4c.2-1.9 0-3.5-.6-5s-1.6-3-3-4.2A498 498 0 0 0 70 14.9L47.6 4l-14.5 7.2A379.7 379.7 0 0 0 8.7 23.5a14.7 14.7 0 0 0-4.2 9.4L10.6 58H16a13.1 13.1 0 0 1 6.6-4 14.5 14.5 0 0 1 10.3 1zm2.6 2.7a5 5 0 0 0-1 .8c-.7.6-1.7.7-2.4.2-.9-.6-1.9-1-3-1.2a11.3 11.3 0 0 0-5.4 0 10.5 10.5 0 0 0-5.2 3.2 11.6 11.6 0 0 0-2.4 6.9c.1.8-.4 1.6-1.2 1.9-.7.2-1.3.6-2 1.1a8 8 0 0 0-1.6 2l-.1.2h73.8l-.1-.2c-.5-.8-1-1.4-1.7-2a6 6 0 0 0-2-1.1c-.6-.3-1.2-1-1.2-1.8 0-1.4-.2-2.7-.6-3.8a9.7 9.7 0 0 0-6.9-6.4 10.6 10.6 0 0 0-5.4 0c-1 .2-2 .6-2.9 1.2-.7.5-1.8.5-2.4-.2a6.3 6.3 0 0 0-4-1.6l-1.5.1h-.2c-1.8.5-7 3-7.3 3-.5 0-.8-.2-1.1-.4-.2-.2-.9-.8-7.6-2.5a6.3 6.3 0 0 0-4.6.6zm-10-28h-.2c0 2.4-.9 4.4-2.6 6.2a8.4 8.4 0 0 1-6.2 2.6v.3c2.4 0 4.4.9 6.2 2.6a8.4 8.4 0 0 1 2.6 6.2h.3c0-2.4.9-4.4 2.6-6.2a8.4 8.4 0 0 1 6.2-2.6v-.3c-2.4 0-4.4-.9-6.2-2.6a8.4 8.4 0 0 1-2.6-6.2zm35.5-11c0 1.1-.5 2-1.3 2.9a4 4 0 0 1-2.8 1.2v.1c1 0 2 .4 2.8 1.2.3.3 1.3 2.8 1.3 2.8 0-1 .4-2 1.3-2.8.8-.8 1.7-1.2 2.8-1.2V23c-1.1 0-2-.4-2.9-1.2a3.9 3.9 0 0 1-1.2-2.9zm8.8 11h-.3c0 2.4-.9 4.4-2.6 6.2a8.4 8.4 0 0 1-6.2 2.6v.3c2.4 0 4.4.9 6.2 2.6a8.4 8.4 0 0 1 2.6 6.2h.3c0-2.4.9-4.4 2.6-6.2a8.4 8.4 0 0 1 6.2-2.6v-.3c-2.4 0-4.4-.9-6.2-2.6a8.5 8.5 0 0 1-2.6-6.2zM37 18.3h-.2c0 1-.4 2-1.2 2.8-.8.8-1.7 1.2-2.8 1.2v.2c1 0 2 .4 2.8 1.2.8.8 1.2 1.7 1.2 2.8h.2c0-1 .4-2 1.2-2.8.8-.8 1.7-1.2 2.8-1.2v-.2c-1 0-2-.4-2.8-1.2a3.8 3.8 0 0 1-1.2-2.8zm9.4 9.6h-.2A7 7 0 0 1 44 33a7.1 7.1 0 0 1-5.2 2.2v.3c2 0 3.7.7 5.1 2.2a7.1 7.1 0 0 1 2.3 5.2h.2a7 7 0 0 1 2.2-5.2 7.1 7.1 0 0 1 5.2-2.2v-.3a7 7 0 0 1-5.2-2.2 7 7 0 0 1-2.2-5.1zm-1.8 55h6v3.4a3 3 0 0 1-3 3 3 3 0 0 1-3-3v-3.4zM81 119.6h10.8c.4 0 .7-.4.7-.8v-10.5h-.4c-6.1 0-11.1 5-11.1 11.2zm-66.1 0H4a.8.8 0 0 1-.8-.8v-10.5h.4c6.2 0 11.2 5 11.2 11.2z" clip-rule="evenodd"/>
+            </svg>
           {/if}
         </div>
       </li>
-      <!-- {#if i !== (clueState.length - 1)}
-        <div class="h-12 border-r-4 border-green-400"/>
-      {/if} -->
     {/each}
   </ul>
 
-  <div style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 items-center bg-cover bg-center overflow-y-scroll scrollbar-left py-12">
+  <div bind:this={scrollableArea} style="background-image: url({paperBg});" id="left-pane" class="w-1/2 h-full bg-amber-200 flex flex-col gap-12 items-center bg-cover bg-center overflow-y-scroll scrollbar-left py-12">
     <Hint title={clueState[selectedClue]?.title} hint={clueState[selectedClue]?.hint}/>
     <!-- add some logic here to disable if this is the last clue -->
-    <div class="flex justify-start w-2/3 gap-x-2">
-      <input class="rounded form-input border-0 focus:ring-0 text-gray-700 text-xl" bind:value={input} type="text" placeholder={clueState[selectedClue]?.placeholder}>
-      <button class="text-xl bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded"  on:click={checkAnswer}>{clueState[selectedClue]?.buttonText}</button>
+    {#if selectedClue !== 6}
+       <div class="flex justify-start w-2/3 gap-x-2 relative">
+      <p class="absolute -top-6 left-2 text-sm">{errorMessage}</p>
+      <input class="rounded form-input border-0 focus:ring-0 text-gray-700 text-xl" on:keypress={handleKeyPress} bind:value={input} type="text" placeholder={clueState[selectedClue]?.placeholder}>
+      <button class="text-xl bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded" on:click={checkAnswer}>{clueState[selectedClue]?.buttonText}</button>
     </div>
+    {/if}
+    
   </div>
   <div id="right-pane" style="background-image: url({wood});" class="w-1/2 h-full bg-blue-300 flex flex-col justify-center items-center bg-cover relative overflow-clip">
-
     <Ship />
     <img class="absolute z-20 rotate-90 top-[300px] h-full w-[40px]" src={frame} alt="">
     <img class="absolute z-20 rotate-90 bottom-[300px] h-full w-[40px]" src={frame} alt="">
